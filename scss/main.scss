@@ -67,7 +67,9 @@ header {
       }
       p {
         margin-bottom: 0.5rem;
-        .bold {
+        .bold-pop,
+        .bold-reg,
+        .bold-cap {
           font-weight: 600;
         }
       }
