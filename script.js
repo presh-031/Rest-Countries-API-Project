@@ -1,6 +1,10 @@
 "use strict";
 
-getAllCountries();
+getUrl();
+// getAllCountries();
+filter();
+
+function getUrl() {}
 
 function getAllCountries() {
   // const url = "https://restcountries.com/v3.1/all";
@@ -83,5 +87,14 @@ function updateDOM(data) {
     countryPopulation.innerHTML = country.population;
     countryRegion.innerHTML = country.region;
     countryCapital.innerHTML = country.capital[0];
+  });
+}
+
+function filter() {
+  const items = document.querySelector("#filter");
+  // console.log(items);
+
+  items.addEventListener("change", (e) => {
+    console.log(e.target.value);
   });
 }
