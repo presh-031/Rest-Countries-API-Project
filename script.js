@@ -1,25 +1,25 @@
 "use strict";
 
-getAllCountriesOnLoad();
-function getAllCountriesOnLoad() {
-  const url = "https://restcountries.com/v3.1/all";
+getAllCountries();
+
+function getAllCountries() {
+  // const url = "https://restcountries.com/v3.1/all";
   fetch(url)
     .then((res) => res.json()) //parse response as JSON
     .then((data) => {
       // console.log(data);
       // console.log(data.length);
-      updateDOMOnPageLoad(data);
+      updateDOM(data);
     })
     .catch((err) => {
       console.log(`error ${err}`);
     });
 }
 
-function updateDOMOnPageLoad(data) {
+function updateDOM(data) {
   const gridContainer = document.querySelector(".countries-container");
-  console.log(data);
   data.forEach((country) => {
-    // create-elements
+    // create elements
     const eachCountry = document.createElement("div");
     const flagContainer = document.createElement("div");
     const flagImage = document.createElement("img");
@@ -34,8 +34,7 @@ function updateDOMOnPageLoad(data) {
     const countryPopulation = document.createElement("span");
     const countryRegion = document.createElement("span");
     const countryCapital = document.createElement("span");
-    // console.log(country.flags.png);
-    console.log(eachCountry);
+
     // add classes
     gridContainer.classList.add("countries-container");
     eachCountry.classList.add("each-country");
