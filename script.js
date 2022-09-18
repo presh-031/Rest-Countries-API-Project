@@ -19,6 +19,9 @@ function updateDOMOnPageLoad(data) {
   const gridContainer = document.querySelector(".countries-container");
   // console.log(data);
   data.forEach((country) => {
-    const gridItem = document.createElement("div");
+    // const gridItem = document.createElement("div");
+    // const countryFlagContainer = document.createElement("div");
+    // const countryInfoContainer = document.createElement("div");
+    console.log(country.flags.png);
   });
 }

@@ -47,3 +47,28 @@ header {
     }
   }
 }
+// Countries section styles.
+.countries-container {
+  width: 80%;
+  margin: 4rem auto 0 auto;
+  .each-country {
+    outline: 1px solid red;
+    .flag-container {
+      img {
+        width: 100%;
+      }
+    }
+    .info-container {
+      padding: 2rem 2rem 4rem 2rem;
+      .country-name {
+        margin-bottom: 1rem;
+      }
+      p {
+        margin-bottom: 0.5rem;
+        .bold {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
