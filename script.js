@@ -1,12 +1,38 @@
 "use strict";
 
-getUrl();
 // getAllCountries();
-filter();
+// filter();
+getUrl();
 
-function getUrl() {}
+function getUrl() {
+  const baseUrl = "https://restcountries.com/v2/";
+  const onPageLoadParam = "all";
+  getAllCountries(baseUrl + onPageLoadParam);
 
-function getAllCountries() {
+  const items = document.querySelector("#filter");
+  items.addEventListener("change", (e) => {
+    const filterParam = e.target.value;
+
+    if (filterParam === "#") {
+      return;
+    } else {
+      getAllCountries(baseUrl + "region/" + filterParam);
+      console.log(baseUrl + "region/" + filterParam);
+    }
+  });
+}
+
+// function filter() {
+//   const items = document.querySelector("#filter");
+//   // console.log(items);
+
+//   items.addEventListener("change", (e) => {
+//     console.log(e.target.value);
+//     const filterParam = e.target.value;
+//   });
+// }
+
+function getAllCountries(url) {
   // const url = "https://restcountries.com/v3.1/all";
   fetch(url)
     .then((res) => res.json()) //parse response as JSON
@@ -22,6 +48,7 @@ function getAllCountries() {
 
 function updateDOM(data) {
   const gridContainer = document.querySelector(".countries-container");
+  gridContainer.innerHTML = "";
   data.forEach((country) => {
     // create elements
     const eachCountry = document.createElement("div");
@@ -87,14 +114,5 @@ function updateDOM(data) {
     countryPopulation.innerHTML = country.population;
     countryRegion.innerHTML = country.region;
     countryCapital.innerHTML = country.capital[0];
-  });
-}
-
-function filter() {
-  const items = document.querySelector("#filter");
-  // console.log(items);
-
-  items.addEventListener("change", (e) => {
-    console.log(e.target.value);
   });
 }
