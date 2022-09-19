@@ -32,10 +32,18 @@ header {
   top: 0;
   z-index: 10;
   width: 100%;
+  .left-section {
+    p {
+      font-weight: 800;
+      font-size: 2rem;
+    }
+  }
   .right-section {
-    outline: 1px solid red;
+    // outline: 1px solid red;
     display: flex;
+    align-items: center;
     column-gap: 0.8rem;
+    font-weight: 600;
     img {
       width: 2rem;
     }
