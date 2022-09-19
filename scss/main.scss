@@ -92,6 +92,9 @@ header {
 .countries-container {
   width: 80%;
   margin: 4rem auto 0 auto;
+  //
+  // transform: translate(0%, 0%) scale(0);
+  // transition: 1000ms ease-in-out;
   .each-country {
     // outline: 1px solid red;
     margin-bottom: 4rem;
@@ -126,3 +129,6 @@ header {
     }
   }
 }
+// .active {
+//   transform: translate(0%, 0%) scale(1);
+// }

@@ -60,6 +60,7 @@ function getAllCountries(param) {
 function updateDOM(data) {
   const gridContainer = document.querySelector(".countries-container");
   gridContainer.innerHTML = "";
+  // gridContainer.classList.add("active");
   data.forEach((country) => {
     // create elements
     const eachCountry = document.createElement("div");
@@ -122,6 +123,7 @@ function updateDOM(data) {
     countryCapital.innerHTML = country.capital;
 
     //
+
     eachCountry.addEventListener("click", (e) => {
       console.log(e, data);
     });
