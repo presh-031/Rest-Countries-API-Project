@@ -54,6 +54,9 @@ function getAllCountries(param) {
     })
     .catch((err) => {
       console.log(`error ${err}`);
+      //
+      //
+      // Error handling.
     });
 }
 
@@ -125,7 +128,19 @@ function updateDOM(data) {
     //
 
     eachCountry.addEventListener("click", (e) => {
-      console.log(e, data);
+      // console.log(e, data);
+      handleCountryClick(e, data);
     });
   });
+}
+
+// click
+function handleCountryClick(e, data) {
+  const clickedItem = e.target;
+  console.log(clickedItem);
+  // if clickedItem is any of the elements within each country,
+  // fetch based on the name
+  // use data returned to update the new page
+  // redirect to the new page
+  // add back btn to redirect back to homepage.
 }
