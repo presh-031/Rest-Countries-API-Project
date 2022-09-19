@@ -1,13 +1,17 @@
 "use strict";
 
-getUrl();
+// getPageLoadUrl();
 
-function getUrl() {
-  const baseUrl = "https://restcountries.com/v2/";
+function getPageLoadUrl() {
   const onPageLoadParam = "all";
-  getAllCountries(baseUrl + onPageLoadParam);
+  getAllCountries(onPageLoadParam);
 
-  // filter
+  filter();
+  search();
+}
+
+// filter
+function filter() {
   const items = document.querySelector("#filter");
   items.addEventListener("change", (e) => {
     const filterParam = e.target.value;
@@ -15,19 +19,25 @@ function getUrl() {
     if (filterParam === "#") {
       return;
     } else {
-      getAllCountries(baseUrl + "region/" + filterParam);
-      console.log(baseUrl + "region/" + filterParam);
+      getAllCountries(`region/${filterParam}`);
     }
   });
 }
 
-function getAllCountries(url) {
-  // const url = "https://restcountries.com/v3.1/all";
-  fetch(url)
+// Search
+search();
+function search() {
+  const inputField = document.querySelector("#search");
+  console.log(inputField.value);
+}
+
+// Function to handle all the fetches
+function getAllCountries(param) {
+  const baseUrl = "https://restcountries.com/v2/";
+
+  fetch(baseUrl + param)
     .then((res) => res.json()) //parse response as JSON
     .then((data) => {
-      // console.log(data);
-      // console.log(data.length);
       updateDOM(data);
     })
     .catch((err) => {
