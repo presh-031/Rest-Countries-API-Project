@@ -135,7 +135,7 @@ function updateDOMForHomePage(data) {
   });
 }
 
-// click
+// ////////////click
 function handleCountryClick(e, data) {
   const clickedItem = e.target;
   console.log(clickedItem);
@@ -174,6 +174,10 @@ function getCountryData(name) {
       console.log(data[0].region);
       console.log(data[0].subregion);
       console.log(data[0].capital);
+      console.log(data[0].topLevelDomain);
+      console.log(data[0].currencies); //array
+      console.log(data[0].languages); //array
+      console.log(data[0].borders); //sometimes undefined, sometimes anarray
     })
     .catch((err) => {
       console.log(`error ${err}`);
