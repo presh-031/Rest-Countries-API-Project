@@ -1,13 +1,13 @@
 "use strict";
 
-// getPageLoadUrl();
+getPageLoadUrl();
 
 function getPageLoadUrl() {
   const onPageLoadParam = "all";
   getAllCountries(onPageLoadParam);
 
   filter();
-  search();
+  search(onPageLoadParam);
 }
 
 // filter
@@ -17,7 +17,8 @@ function filter() {
     const filterParam = e.target.value;
     console.log(filterParam);
     if (filterParam === "#") {
-      return;
+      // getAllCountries(onPageLoadParam);
+      getPageLoadUrl();
     } else {
       getAllCountries(`region/${filterParam}`);
     }
@@ -25,10 +26,16 @@ function filter() {
 }
 
 // Search
-search();
-function search() {
+function search(onPageLoadParam) {
   const inputField = document.querySelector("#search");
-  console.log(inputField.value);
+  inputField.addEventListener("input", () => {
+    // console.log(inputField.value);
+    if (inputField.value) {
+      getAllCountries(`name/${inputField.value}`);
+    } else {
+      getAllCountries(onPageLoadParam);
+    }
+  });
 }
 
 // Function to handle all the fetches
