@@ -123,7 +123,8 @@ function updateDOMForHomePage(data) {
     countryName.innerHTML = country.name;
     countryPopulation.innerHTML = country.population;
     countryRegion.innerHTML = country.region;
-    countryCapital.innerHTML = country.capital;
+    // sometimes, country capital returns undefined.
+    countryCapital.innerHTML = country.capital ? country.capital : "-";
 
     //
 
@@ -167,6 +168,12 @@ function getCountryData(name) {
       // currencies
       // languages
       // bordercountries
+      console.log(data[0].name);
+      console.log(data[0].nativeName);
+      console.log(data[0].population);
+      console.log(data[0].region);
+      console.log(data[0].subregion);
+      console.log(data[0].capital);
     })
     .catch((err) => {
       console.log(`error ${err}`);
