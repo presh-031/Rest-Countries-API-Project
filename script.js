@@ -3,6 +3,7 @@
 getPageLoadUrl();
 
 function getPageLoadUrl() {
+  // API docs
   const onPageLoadParam = "all";
   getAllCountries(onPageLoadParam);
 
@@ -29,9 +30,10 @@ function filter() {
 function search(onPageLoadParam) {
   const inputField = document.querySelector("#search");
   inputField.addEventListener("input", () => {
-    // console.log(inputField.value);
-    if (inputField.value) {
-      getAllCountries(`name/${inputField.value}`);
+    const searchTerm = inputField.value.toLowerCase();
+    // console.log(searchTerm);
+    if (searchTerm) {
+      getAllCountries(`name/${searchTerm}`);
     } else {
       getAllCountries(onPageLoadParam);
     }
@@ -41,11 +43,14 @@ function search(onPageLoadParam) {
 // Function to handle all the fetches
 function getAllCountries(param) {
   const baseUrl = "https://restcountries.com/v2/";
+  const loader = document.querySelector(".loader");
+  loader.style.display = "block";
 
   fetch(baseUrl + param)
     .then((res) => res.json()) //parse response as JSON
     .then((data) => {
       updateDOM(data);
+      loader.style.display = "none";
     })
     .catch((err) => {
       console.log(`error ${err}`);
@@ -107,6 +112,7 @@ function updateDOM(data) {
 
     // update content as appropriate
     flagImage.src = country.flags.svg;
+    flagImage.alt = "flag-img";
     boldPop.innerHTML = "Population: ";
     boldReg.innerHTML = "Region: ";
     boldCap.innerHTML = "Capital: ";
@@ -114,5 +120,10 @@ function updateDOM(data) {
     countryPopulation.innerHTML = country.population;
     countryRegion.innerHTML = country.region;
     countryCapital.innerHTML = country.capital;
+
+    //
+    eachCountry.addEventListener("click", (e) => {
+      console.log(e, data);
+    });
   });
 }
