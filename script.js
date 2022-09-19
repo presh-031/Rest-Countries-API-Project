@@ -40,7 +40,7 @@ function search(onPageLoadParam) {
   });
 }
 
-// Function to handle all the fetches
+// Function to handle all the fetches for HomePage
 function getAllCountries(param) {
   const baseUrl = "https://restcountries.com/v2/";
   const loader = document.querySelector(".loader");
@@ -49,7 +49,7 @@ function getAllCountries(param) {
   fetch(baseUrl + param)
     .then((res) => res.json()) //parse response as JSON
     .then((data) => {
-      updateDOM(data);
+      updateDOMForHomePage(data);
       loader.style.display = "none";
     })
     .catch((err) => {
@@ -60,7 +60,7 @@ function getAllCountries(param) {
     });
 }
 
-function updateDOM(data) {
+function updateDOMForHomePage(data) {
   const gridContainer = document.querySelector(".countries-container");
   gridContainer.innerHTML = "";
   // gridContainer.classList.add("active");
@@ -143,4 +143,36 @@ function handleCountryClick(e, data) {
   // use data returned to update the new page
   // redirect to the new page
   // add back btn to redirect back to homepage.
+
+  if (clickedItem.classList.contains("country-name")) {
+    console.log(clickedItem.innerHTML.toLowerCase());
+    getCountryData(clickedItem.innerHTML.toLowerCase());
+  }
 }
+
+function getCountryData(name) {
+  const url = `https://restcountries.com/v2/name/${name}`;
+
+  fetch(url)
+    .then((res) => res.json()) //parse response as JSON
+    .then((data) => {
+      console.log(data);
+      // name
+      // nativename
+      // population
+      // region
+      // subregion
+      // capital
+      // topleveldomain
+      // currencies
+      // languages
+      // bordercountries
+    })
+    .catch((err) => {
+      console.log(`error ${err}`);
+      //
+      //
+      // Error handling.
+    });
+}
+function updateDOMForInfoPage() {}
