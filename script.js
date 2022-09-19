@@ -1,7 +1,5 @@
 "use strict";
 
-// getAllCountries();
-// filter();
 getUrl();
 
 function getUrl() {
@@ -9,10 +7,11 @@ function getUrl() {
   const onPageLoadParam = "all";
   getAllCountries(baseUrl + onPageLoadParam);
 
+  // filter
   const items = document.querySelector("#filter");
   items.addEventListener("change", (e) => {
     const filterParam = e.target.value;
-
+    console.log(filterParam);
     if (filterParam === "#") {
       return;
     } else {
@@ -21,16 +20,6 @@ function getUrl() {
     }
   });
 }
-
-// function filter() {
-//   const items = document.querySelector("#filter");
-//   // console.log(items);
-
-//   items.addEventListener("change", (e) => {
-//     console.log(e.target.value);
-//     const filterParam = e.target.value;
-//   });
-// }
 
 function getAllCountries(url) {
   // const url = "https://restcountries.com/v3.1/all";
@@ -100,19 +89,13 @@ function updateDOM(data) {
     countryInfoCap.append(countryCapital);
 
     // update content as appropriate
-
-    console.log(country.name.common);
-    console.log(country.population);
-    console.log(country.capital[0]);
-    console.log(country.region);
-
     flagImage.src = country.flags.svg;
     boldPop.innerHTML = "Population: ";
     boldReg.innerHTML = "Region: ";
     boldCap.innerHTML = "Capital: ";
-    countryName.innerHTML = country.name.common;
+    countryName.innerHTML = country.name;
     countryPopulation.innerHTML = country.population;
     countryRegion.innerHTML = country.region;
-    countryCapital.innerHTML = country.capital[0];
+    countryCapital.innerHTML = country.capital;
   });
 }

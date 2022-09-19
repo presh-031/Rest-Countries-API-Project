@@ -13,15 +13,22 @@
 :root {
   font-size: 62.5%;
 }
+body {
+  position: relative;
+  padding-top: 8rem;
+}
 // Mobile-first styles
 header {
   display: flex;
   justify-content: space-between;
-  outline: 1px solid red;
+  // outline: 1px solid red;
   padding: 2rem;
   font-size: 1.4rem;
   background-color: $white;
   box-shadow: 0 5px 5px rgba($color: #000000, $alpha: 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 .form-and-dropdown-container {
   width: 80%;
