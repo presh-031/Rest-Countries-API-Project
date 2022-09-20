@@ -170,7 +170,7 @@ function getCountryData(name) {
   fetch(url)
     .then((res) => res.json()) //parse response as JSON
     .then((data) => {
-      flagSpecific.innerHTML = data[0].flag;
+      flagSpecific.src = data[0].flags.svg;
       nativeNameSpecific.innerHTML = data[0].nativeName;
       populationSpecific.innerHTML = data[0].population;
       regionSpecific.innerHTML = data[0].region;
