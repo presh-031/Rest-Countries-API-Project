@@ -169,6 +169,7 @@ function getSpecificCountryData(name) {
       // Better Error handling.
     });
 }
+
 function updateDOMForInfoPage(data) {
   const flagSpecific = document.querySelector(".flag-image-specific");
   const nativeNameSpecific = document.querySelector(".native-name-specific");
@@ -192,6 +193,9 @@ function updateDOMForInfoPage(data) {
   // console.log(data[0].currencies); //array
   // console.log(data[0].languages); //array
   // console.log(data[0].borders); //sometimes undefined, sometimes an array
+
+  // clearing  content of parent before looping and appending
+  currenciesSpecific.innerHTML = "";
   const currencies = data[0].currencies;
   currencies.forEach((currency) => {
     const eachCurrency = document.createElement("span");
@@ -203,8 +207,11 @@ function updateDOMForInfoPage(data) {
   });
 
   const languages = data[0].languages;
+  // clearing  content of parent before looping and appending
+  languagesSpecific.innerHTML = "";
   languages.forEach((language) => {
     const eachLanguage = document.createElement("span");
+    // eachLanguage.innerHTML = "";
     languagesSpecific.append(eachLanguage);
 
     // Better text-formatting of the each language shown from the languages array.
@@ -213,6 +220,9 @@ function updateDOMForInfoPage(data) {
   });
 
   const borderCountries = data[0].borders;
+  // clearing  content of parent before looping and appending
+  bordersSpecific.innerHTML = "";
+
   // Loose inequality necessary for implicit conversion.
   if (borderCountries != 0) {
     borderCountries.forEach((borderCountry) => {
@@ -222,10 +232,13 @@ function updateDOMForInfoPage(data) {
       eachBorderCountry.classList.add("border");
       bordersSpecific.append(eachBorderCountry);
       eachBorderCountry.innerHTML = borderCountry;
+
+      // innerHTML of eachborderCountry will be used to fetch when any one of them is clicked.
+      borderCountryInfo(eachBorderCountry);
     });
   } else {
     bordersSpecific.style.display = "inline-block";
-    bordersSpecific.innerHTML = "None.";
+    bordersSpecific.innerHTML = "No borders.";
   }
 }
 
@@ -234,5 +247,14 @@ function back() {
   backBtn.addEventListener("click", () => {
     homePageMain.style.display = "block";
     countryPageMain.style.display = "none";
+  });
+}
+
+//function to handle border countries click
+function borderCountryInfo(borderCountries) {
+  console.log(borderCountries);
+
+  borderCountries.addEventListener("click", (e) => {
+    console.log(e.target.textContent);
   });
 }
