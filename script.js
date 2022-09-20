@@ -2,8 +2,9 @@
 
 getPageLoadUrl();
 
+// Function to load all countries on page load.
 function getPageLoadUrl() {
-  // API docs
+  // According to API docs
   const onPageLoadParam = "all";
   getAllCountries(onPageLoadParam);
 
@@ -11,7 +12,7 @@ function getPageLoadUrl() {
   search(onPageLoadParam);
 }
 
-// filter
+// Function to handle filter
 function filter() {
   const items = document.querySelector("#filter");
   items.addEventListener("change", (e) => {
@@ -27,15 +28,15 @@ function filter() {
   });
 }
 
-// Search
+// Fuction to handle Search
 function search(onPageLoadParam) {
   const inputField = document.querySelector("#search");
   inputField.addEventListener("input", () => {
     const searchTerm = inputField.value.toLowerCase();
-    // console.log(searchTerm);
     if (searchTerm) {
       getAllCountries(`name/${searchTerm}`);
     } else {
+      // Show all countries if input field is empty (when user presses and holds backspace.)
       getAllCountries(onPageLoadParam);
     }
   });
@@ -124,10 +125,8 @@ function updateDOMForHomePage(data) {
     countryName.innerHTML = country.name;
     countryPopulation.innerHTML = country.population;
     countryRegion.innerHTML = country.region;
-    // sometimes, country capital returns undefined.
+    // sometimes, country.capital returns undefined.
     countryCapital.innerHTML = country.capital ? country.capital : "-";
-
-    //
 
     eachCountry.addEventListener("click", (e) => {
       // console.log(e, data);
