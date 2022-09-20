@@ -2,6 +2,7 @@
 
 const homePageMain = document.querySelector(".home-page-main");
 const countryPageMain = document.querySelector(".country-page-main");
+const backBtn = document.querySelector(".back-btn");
 
 getPageLoadUrl();
 
@@ -161,8 +162,8 @@ function getSpecificCountryData(name) {
     .then((data) => {
       // loader disappears
       countryPageMain.style.display = "block";
-
       updateDOMForInfoPage(data);
+      back();
     })
     .catch((err) => {
       console.log(`error ${err}`);
@@ -226,4 +227,12 @@ function updateDOMForInfoPage(data) {
     bordersSpecific.style.display = "inline-block";
     bordersSpecific.innerHTML = "None.";
   }
+}
+
+// Function to handle backBtn click
+function back() {
+  backBtn.addEventListener("click", () => {
+    homePageMain.style.display = "block";
+    countryPageMain.style.display = "none";
+  });
 }

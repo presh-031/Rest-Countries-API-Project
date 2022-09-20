@@ -99,7 +99,7 @@ header {
   }
 }
 
-// Countries section styles.
+// All Countries section styles.
 .countries-container {
   width: 80%;
   margin: 4rem auto 0 auto;
@@ -147,7 +147,7 @@ header {
   width: 80%;
   margin: auto;
   display: none;
-  .button-container {
+  .back-btn {
     display: inline-flex;
     align-items: center;
     font-size: 2rem;
@@ -162,7 +162,7 @@ header {
       margin-right: 0.2rem;
     }
   }
-  .button-container:active {
+  .back-btn:active {
     box-shadow: none;
   }
 
