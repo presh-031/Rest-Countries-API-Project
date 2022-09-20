@@ -140,22 +140,32 @@ function updateDOMForHomePage(data) {
 function handleCountryClick(e, data) {
   const clickedItem = e.target;
   console.log(clickedItem);
-  // if clickedItem is any of the elements within each country,
-  // fetch based on the name
-  // use data returned to update the new page
-  // redirect to the new page
   // add back btn to redirect back to homepage.
 
   if (clickedItem.classList.contains("country-name")) {
     console.log(clickedItem.innerHTML.toLowerCase());
-    getCountryData(clickedItem.innerHTML.toLowerCase());
+    getSpecificCountryData(clickedItem.innerHTML.toLowerCase());
   }
 }
 
-function getCountryData(name) {
+function getSpecificCountryData(name) {
   const url = `https://restcountries.com/v2/name/${name}`;
 
   gridContainer.style.display = "none";
+  // loader.style.display = "block";
+  fetch(url)
+    .then((res) => res.json()) //parse response as JSON
+    .then((data) => {
+      updateDOMForInfoPage(data);
+      console.log("detail fetched");
+      // loader.style.display = "none";
+    })
+    .catch((err) => {
+      console.log(`error ${err}`);
+      // Better Error handling.
+    });
+}
+function updateDOMForInfoPage(data) {
   const flagSpecific = document.querySelector(".flag-image-specific");
   const nativeNameSpecific = document.querySelector(".native-name-specific");
   const populationSpecific = document.querySelector(".population-specific");
@@ -167,65 +177,47 @@ function getCountryData(name) {
   const languagesSpecific = document.querySelector(".languages-specific");
   const bordersSpecific = document.querySelector(".borders-specific");
 
-  fetch(url)
-    .then((res) => res.json()) //parse response as JSON
-    .then((data) => {
-      flagSpecific.src = data[0].flags.svg;
-      nativeNameSpecific.innerHTML = data[0].nativeName;
-      populationSpecific.innerHTML = data[0].population;
-      regionSpecific.innerHTML = data[0].region;
-      subRegionSpecific.innerHTML = data[0].subregion;
-      capitalSpecific.innerHTML = data[0].capital;
-      topLevelDomainSpecific.innerHTML = data[0].topLevelDomain;
-      // nativename
-      // population
-      // region
-      const currencies = data[0].currencies;
-      console.log(currencies);
-      currencies.forEach((currency) => {
-        const eachCurrency = document.createElement("span");
-        currenciesSpecific.append(eachCurrency);
-        eachCurrency.innerHTML = currency.name;
-      });
+  flagSpecific.src = data[0].flags.svg;
+  nativeNameSpecific.innerHTML = data[0].nativeName;
+  populationSpecific.innerHTML = data[0].population;
+  regionSpecific.innerHTML = data[0].region;
+  subRegionSpecific.innerHTML = data[0].subregion;
+  capitalSpecific.innerHTML = data[0].capital;
+  topLevelDomainSpecific.innerHTML = data[0].topLevelDomain;
 
-      const languages = data[0].languages;
-      languages.forEach((language) => {
-        const eachLanguage = document.createElement("span");
-        languagesSpecific.append(eachLanguage);
-        eachLanguage.innerHTML = `${language.name}, `;
-      });
+  // console.log(data[0].currencies); //array
+  // console.log(data[0].languages); //array
+  // console.log(data[0].borders); //sometimes undefined, sometimes anarray
+  const currencies = data[0].currencies;
+  currencies.forEach((currency) => {
+    const eachCurrency = document.createElement("span");
+    currenciesSpecific.append(eachCurrency);
 
-      const borderCountries = data[0].borders;
-      console.log(borderCountries);
-      borderCountries.forEach((borderCountry) => {
-        const eachBorderCountry = document.createElement("button");
-        eachBorderCountry.classList.add("border");
-        bordersSpecific.append(eachBorderCountry);
-        eachBorderCountry.innerHTML = borderCountry;
-      });
-      // subregion
-      // capital
-      // topleveldomain
-      // currencies
-      // languages
-      // bordercountries
+    // Better text-formatting of the each language shown from the languages array.
+    eachCurrency.innerHTML =
+      currencies.indexOf(currency) === currencies.length - 1 ? `${currency.name}.` : `${currency.name}, `;
+  });
 
-      // console.log(data[0].name);
-      // console.log(data[0].nativeName);
-      // console.log(data[0].population);
-      // console.log(data[0].region);
-      // console.log(data[0].subregion);
-      // console.log(data[0].capital);
-      // console.log(data[0].topLevelDomain);
-      // console.log(data[0].currencies); //array
-      // console.log(data[0].languages); //array
-      // console.log(data[0].borders); //sometimes undefined, sometimes anarray
-    })
-    .catch((err) => {
-      console.log(`error ${err}`);
-      //
-      //
-      // Error handling.
+  const languages = data[0].languages;
+  languages.forEach((language) => {
+    const eachLanguage = document.createElement("span");
+    languagesSpecific.append(eachLanguage);
+
+    // Better text-formatting of the each language shown from the languages array.
+    eachLanguage.innerHTML =
+      languages.indexOf(language) === languages.length - 1 ? `${language.name}.` : `${language.name}, `;
+  });
+
+  const borderCountries = data[0].borders;
+  console.log(borderCountries);
+  if (borderCountries) {
+    borderCountries.forEach((borderCountry) => {
+      const eachBorderCountry = document.createElement("button");
+      eachBorderCountry.classList.add("border");
+      bordersSpecific.append(eachBorderCountry);
+      eachBorderCountry.innerHTML = borderCountry;
     });
+  } else {
+    bordersSpecific.innerHTML = "None.";
+  }
 }
-function updateDOMForInfoPage() {}
