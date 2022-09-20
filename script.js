@@ -192,7 +192,7 @@ function getCountryData(name) {
       languages.forEach((language) => {
         const eachLanguage = document.createElement("span");
         languagesSpecific.append(eachLanguage);
-        eachLanguage.innerHTML = language.name;
+        eachLanguage.innerHTML = `${language.name}, `;
       });
 
       const borderCountries = data[0].borders;
