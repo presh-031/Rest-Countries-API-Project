@@ -48,6 +48,9 @@ header {
     }
   }
 }
+//
+// main {
+// }
 .form-and-dropdown-container {
   width: 80%;
   margin: auto;
@@ -100,7 +103,6 @@ header {
 .countries-container {
   width: 80%;
   margin: 4rem auto 0 auto;
-  // display: none;
   //
   // transform: translate(0%, 0%) scale(0);
   // transition: 1000ms ease-in-out;
@@ -139,10 +141,11 @@ header {
   }
 }
 
-// Specific Country Page Styles.country-page-main {
+// Specific Country Page Styles
 .country-page-main {
   width: 80%;
   margin: auto;
+  display: none;
   .flag-container-specific {
     img {
       width: 100%;

@@ -1,5 +1,8 @@
 "use strict";
 
+const homePageMain = document.querySelector(".home-page-main");
+const countryPageMain = document.querySelector(".country-page-main");
+
 getPageLoadUrl();
 
 // Function to load all countries on page load.
@@ -20,7 +23,6 @@ function filter() {
     console.log(filterParam);
     if (filterParam === "#") {
       getAllCountries(onPageLoadParam);
-      // getPageLoadUrl();
       inputField.value = "";
     } else {
       getAllCountries(`region/${filterParam}`);
@@ -130,6 +132,8 @@ function updateDOMForHomePage(data) {
 
     eachCountry.addEventListener("click", (e) => {
       // console.log(e, data);
+      homePageMain.style.display = "none";
+      // loader shows
       handleCountryClick(e, data);
     });
   });
@@ -150,14 +154,15 @@ function handleCountryClick(e, data) {
 function getSpecificCountryData(name) {
   const url = `https://restcountries.com/v2/name/${name}`;
 
-  gridContainer.style.display = "none";
+  // gridContainer.style.display = "none";
   // loader.style.display = "block";
   fetch(url)
     .then((res) => res.json()) //parse response as JSON
     .then((data) => {
+      // loader disappears
+      countryPageMain.style.display = "block";
+
       updateDOMForInfoPage(data);
-      console.log("detail fetched");
-      // loader.style.display = "none";
     })
     .catch((err) => {
       console.log(`error ${err}`);
