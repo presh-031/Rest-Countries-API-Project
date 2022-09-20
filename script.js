@@ -42,7 +42,7 @@ function search(onPageLoadParam) {
   });
 }
 
-// Function to handle all the fetches for HomePage
+// Function to handle all the fetches for HomePage and loader.
 function getAllCountries(param) {
   const baseUrl = "https://restcountries.com/v2/";
   const loader = document.querySelector(".loader");
@@ -177,11 +177,11 @@ function updateDOMForInfoPage(data) {
   const bordersSpecific = document.querySelector(".borders-specific");
 
   flagSpecific.src = data[0].flags.svg;
-  nativeNameSpecific.innerHTML = data[0].nativeName;
+  nativeNameSpecific.innerHTML = `${data[0].nativeName}.`;
   populationSpecific.innerHTML = data[0].population;
-  regionSpecific.innerHTML = data[0].region;
-  subRegionSpecific.innerHTML = data[0].subregion;
-  capitalSpecific.innerHTML = data[0].capital;
+  regionSpecific.innerHTML = `${data[0].region}.`;
+  subRegionSpecific.innerHTML = `${data[0].subregion}.`;
+  capitalSpecific.innerHTML = `${data[0].capital}.`;
   topLevelDomainSpecific.innerHTML = data[0].topLevelDomain;
 
   // console.log(data[0].currencies); //array
