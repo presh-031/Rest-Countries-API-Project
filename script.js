@@ -4,12 +4,13 @@ const homePageMain = document.querySelector(".home-page-main");
 const countryPageMain = document.querySelector(".country-page-main");
 const backBtn = document.querySelector(".back-btn");
 
+const onPageLoadParam = "all";
+
 getPageLoadUrl();
 
 // Function to load all countries on page load.
 function getPageLoadUrl() {
   // According to API docs
-  const onPageLoadParam = "all";
   getAllCountries(onPageLoadParam);
 
   filter();
@@ -27,6 +28,7 @@ function filter() {
       inputField.value = "";
     } else {
       getAllCountries(`region/${filterParam}`);
+      inputField.value = "";
     }
   });
 }
@@ -143,9 +145,6 @@ function updateDOMForHomePage(data) {
 // ////////////click
 function handleCountryClick(e, data) {
   const clickedItem = e.target;
-  console.log(clickedItem);
-  // add back btn to redirect back to homepage.
-
   if (clickedItem.classList.contains("country-name")) {
     console.log(clickedItem.innerHTML.toLowerCase());
     getSpecificCountryData(clickedItem.innerHTML.toLowerCase());
@@ -214,7 +213,8 @@ function updateDOMForInfoPage(data) {
   });
 
   const borderCountries = data[0].borders;
-  if (borderCountries) {
+  // Loose inequality necessary for implicit conversion.
+  if (borderCountries != 0) {
     borderCountries.forEach((borderCountry) => {
       const eachBorderCountry = document.createElement("button");
 
