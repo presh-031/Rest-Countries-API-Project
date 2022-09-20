@@ -61,8 +61,8 @@ function getAllCountries(param) {
     });
 }
 
+const gridContainer = document.querySelector(".countries-container");
 function updateDOMForHomePage(data) {
-  const gridContainer = document.querySelector(".countries-container");
   gridContainer.innerHTML = "";
   // gridContainer.classList.add("active");
   data.forEach((country) => {
@@ -155,6 +155,7 @@ function handleCountryClick(e, data) {
 function getCountryData(name) {
   const url = `https://restcountries.com/v2/name/${name}`;
 
+  gridContainer.style.display = "none";
   const flagSpecific = document.querySelector(".flag-image-specific");
   const nativeNameSpecific = document.querySelector(".native-name-specific");
   const populationSpecific = document.querySelector(".population-specific");
@@ -163,28 +164,51 @@ function getCountryData(name) {
   const capitalSpecific = document.querySelector(".capital-specific");
   const topLevelDomainSpecific = document.querySelector(".top-level-domain-specific");
   const currenciesSpecific = document.querySelector(".currencies-specific");
-
-  console.log(page);
+  const languagesSpecific = document.querySelector(".languages-specific");
+  const bordersSpecific = document.querySelector(".borders-specific");
 
   fetch(url)
     .then((res) => res.json()) //parse response as JSON
     .then((data) => {
-      const nativeNameSpecific = document.querySelector(".native-name-specific");
-      console.log(data);
-      // flag
-      // name
+      flagSpecific.innerHTML = data[0].flag;
       nativeNameSpecific.innerHTML = data[0].nativeName;
+      populationSpecific.innerHTML = data[0].population;
+      regionSpecific.innerHTML = data[0].region;
+      subRegionSpecific.innerHTML = data[0].subregion;
+      capitalSpecific.innerHTML = data[0].capital;
+      topLevelDomainSpecific.innerHTML = data[0].topLevelDomain;
       // nativename
       // population
       // region
+      const currencies = data[0].currencies;
+      console.log(currencies);
+      currencies.forEach((currency) => {
+        const eachCurrency = document.createElement("span");
+        currenciesSpecific.append(eachCurrency);
+        eachCurrency.innerHTML = currency.name;
+      });
+
+      const languages = data[0].languages;
+      languages.forEach((language) => {
+        const eachLanguage = document.createElement("span");
+        languagesSpecific.append(eachLanguage);
+        eachLanguage.innerHTML = language.name;
+      });
+
+      const borderCountries = data[0].borders;
+      console.log(borderCountries);
+      borderCountries.forEach((borderCountry) => {
+        const eachBorderCountry = document.createElement("button");
+        eachBorderCountry.classList.add("border");
+        bordersSpecific.append(eachBorderCountry);
+        eachBorderCountry.innerHTML = borderCountry;
+      });
       // subregion
       // capital
       // topleveldomain
       // currencies
       // languages
       // bordercountries
-
-      // document.title = name
 
       // console.log(data[0].name);
       // console.log(data[0].nativeName);

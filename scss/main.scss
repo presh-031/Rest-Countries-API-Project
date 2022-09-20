@@ -170,9 +170,26 @@ header {
     .last-box {
       // outline: 1px solid red;
       font-size: 2rem;
-      .bold {
-        font-weight: 600;
+      div {
+        .bold {
+          font-weight: 600;
+        }
+        .borders-specific {
+          margin-top: 2rem;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          // outline: 1px solid red;
+        }
       }
     }
   }
+}
+.border {
+  padding: 0.5rem 2rem;
+  background-color: $white;
+  border: none;
+  border-radius: 2px;
+  outline: 1px solid $dark-gray;
+  box-shadow: 1px 1px 5px rgba($color: #000000, $alpha: 0.2);
 }
