@@ -18,8 +18,9 @@ function filter() {
     const filterParam = e.target.value;
     console.log(filterParam);
     if (filterParam === "#") {
-      // getAllCountries(onPageLoadParam);
-      getPageLoadUrl();
+      getAllCountries(onPageLoadParam);
+      // getPageLoadUrl();
+      inputField.value = "";
     } else {
       getAllCountries(`region/${filterParam}`);
     }
@@ -154,11 +155,25 @@ function handleCountryClick(e, data) {
 function getCountryData(name) {
   const url = `https://restcountries.com/v2/name/${name}`;
 
+  const flagSpecific = document.querySelector(".flag-image-specific");
+  const nativeNameSpecific = document.querySelector(".native-name-specific");
+  const populationSpecific = document.querySelector(".population-specific");
+  const regionSpecific = document.querySelector(".region-specific");
+  const subRegionSpecific = document.querySelector(".subregion-specific");
+  const capitalSpecific = document.querySelector(".capital-specific");
+  const topLevelDomainSpecific = document.querySelector(".top-level-domain-specific");
+  const currenciesSpecific = document.querySelector(".currencies-specific");
+
+  console.log(page);
+
   fetch(url)
     .then((res) => res.json()) //parse response as JSON
     .then((data) => {
+      const nativeNameSpecific = document.querySelector(".native-name-specific");
       console.log(data);
+      // flag
       // name
+      nativeNameSpecific.innerHTML = data[0].nativeName;
       // nativename
       // population
       // region
@@ -168,16 +183,19 @@ function getCountryData(name) {
       // currencies
       // languages
       // bordercountries
-      console.log(data[0].name);
-      console.log(data[0].nativeName);
-      console.log(data[0].population);
-      console.log(data[0].region);
-      console.log(data[0].subregion);
-      console.log(data[0].capital);
-      console.log(data[0].topLevelDomain);
-      console.log(data[0].currencies); //array
-      console.log(data[0].languages); //array
-      console.log(data[0].borders); //sometimes undefined, sometimes anarray
+
+      // document.title = name
+
+      // console.log(data[0].name);
+      // console.log(data[0].nativeName);
+      // console.log(data[0].population);
+      // console.log(data[0].region);
+      // console.log(data[0].subregion);
+      // console.log(data[0].capital);
+      // console.log(data[0].topLevelDomain);
+      // console.log(data[0].currencies); //array
+      // console.log(data[0].languages); //array
+      // console.log(data[0].borders); //sometimes undefined, sometimes anarray
     })
     .catch((err) => {
       console.log(`error ${err}`);

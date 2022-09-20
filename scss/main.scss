@@ -1,5 +1,4 @@
 @import "./abstracts/utilities";
-@import "./pages/countrypage";
 
 // Reset
 *,
@@ -101,6 +100,7 @@ header {
 .countries-container {
   width: 80%;
   margin: 4rem auto 0 auto;
+  // display: none;
   //
   // transform: translate(0%, 0%) scale(0);
   // transition: 1000ms ease-in-out;
@@ -138,6 +138,41 @@ header {
     }
   }
 }
-// .active {
-//   transform: translate(0%, 0%) scale(1);
-// }
+
+// Specific Country Page Styles.country-page-main {
+.country-page-main {
+  width: 80%;
+  margin: auto;
+  .flag-container-specific {
+    img {
+      width: 100%;
+      height: 20rem;
+    }
+  }
+  .info-container-specific {
+    margin-top: 2rem;
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 4rem;
+    }
+    div {
+      div {
+        margin-bottom: 4rem;
+        p {
+          margin: 0.8rem 0;
+          font-size: 2rem;
+          .bold {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+    .last-box {
+      // outline: 1px solid red;
+      font-size: 2rem;
+      .bold {
+        font-weight: 600;
+      }
+    }
+  }
+}

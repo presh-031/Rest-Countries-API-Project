@@ -7,7 +7,7 @@
     <title>Country Details</title>
     <link rel="stylesheet" href="./css/main.css" />
   </head>
-  <body>
+  <body id="countrypage">
     <header>
       <div class="left-section">
         <p>Where in the world?</p>
@@ -20,53 +20,55 @@
     <div></div>
     <main class="country-page-main">
       <div class="flag-container-specific">
-        <img src="https://flagcdn.com/w320/bs.png" alt="" />
+        <img class="flag-image-specific" src="" alt="" />
       </div>
       <div class="info-container-specific">
-        <h2 class="country-name-specific">Belgium</h2>
+        <h2 class="country-name-specific"></h2>
         <div>
           <div>
             <p>
               <span class="bold">Native Name: </span>
-              <span></span>
+              <span class="native-name-specific"></span>
             </p>
             <p>
               <span class="bold">Population:</span>
-              <span></span>
+              <span class="population-specific"></span>
             </p>
             <p>
               <span class="bold">Region:</span>
-              <span></span>
+              <span class="region-specific"></span>
             </p>
             <p>
               <span class="bold">Sub Region:</span>
-              <span></span>
+              <span class="subregion-specific"></span>
             </p>
             <p>
               <span class="bold">Capital:</span>
-              <span></span>
+              <span class="capital-specific"></span>
             </p>
           </div>
           <div>
             <p>
               <span class="bold">Top Level Domain:</span>
-              <span></span>
+              <span class="top-level-domain-specific"></span>
             </p>
             <p>
               <span class="bold">Currencies:</span>
-              <span></span>
+              <span class="currencies-specific"></span>
             </p>
             <p>
               <span class="bold">Languages:</span>
-              <span></span>
+              <span class="languages-specific"></span>
             </p>
           </div>
         </div>
-        <div>
-          <p class="bold">Border Countries:</p>
+        <div class="last-box">
+          <p><span class="bold">Border Countries:</span></p>
+
           <!-- Loop wil create the links? -->
         </div>
       </div>
     </main>
+    <script type="module" src="./countrypage.js"></script>
   </body>
 </html>
