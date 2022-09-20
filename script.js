@@ -218,6 +218,7 @@ function updateDOMForInfoPage(data) {
       eachBorderCountry.innerHTML = borderCountry;
     });
   } else {
+    bordersSpecific.style.display = "inline-block";
     bordersSpecific.innerHTML = "None.";
   }
 }
