@@ -187,7 +187,7 @@ function updateDOMForInfoPage(data) {
 
   // console.log(data[0].currencies); //array
   // console.log(data[0].languages); //array
-  // console.log(data[0].borders); //sometimes undefined, sometimes anarray
+  // console.log(data[0].borders); //sometimes undefined, sometimes an array
   const currencies = data[0].currencies;
   currencies.forEach((currency) => {
     const eachCurrency = document.createElement("span");
@@ -209,10 +209,11 @@ function updateDOMForInfoPage(data) {
   });
 
   const borderCountries = data[0].borders;
-  console.log(borderCountries);
   if (borderCountries) {
     borderCountries.forEach((borderCountry) => {
       const eachBorderCountry = document.createElement("button");
+
+      // Has better representation with styles from this class, hence doesn't need formatting.
       eachBorderCountry.classList.add("border");
       bordersSpecific.append(eachBorderCountry);
       eachBorderCountry.innerHTML = borderCountry;
