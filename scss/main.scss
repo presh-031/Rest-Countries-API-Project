@@ -43,9 +43,6 @@ header {
     font-weight: 600;
     // outline: 1px solid red;
     cursor: pointer;
-    img {
-      width: 2rem;
-    }
   }
 }
 // Attribution section
@@ -57,15 +54,6 @@ aside {
     a {
       color: inherit;
       cursor: pointer;
-    }
-    img {
-      font-size: inherit;
-      width: 1.5rem;
-      cursor: pointer;
-      transition: transform 0.3s ease-in-out;
-    }
-    img:hover {
-      transform: rotate(360deg) scale(1.2);
     }
   }
 }
@@ -229,11 +217,6 @@ main {
     padding: 0.4rem 2.5rem;
     margin: 2rem 0 5rem 0;
     cursor: pointer;
-    img {
-      width: 2rem;
-      height: 100%;
-      margin-right: 0.2rem;
-    }
   }
   .back-btn:active {
     box-shadow: none;
@@ -299,6 +282,9 @@ body {
     --h-bkg-color: #fff;
     --h-text-color: hsl(200, 15%, 8%);
   }
+  aside {
+    --aside-text-color: hsl(200, 15%, 8%);
+  }
   .form-and-dropdown-container {
     form {
       input {
@@ -335,6 +321,9 @@ body.dark-theme {
   header {
     --h-bkg-color: hsl(209, 23%, 22%);
     --h-text-color: #fff;
+  }
+  aside {
+    --aside-text-color: #fff;
   }
   .form-and-dropdown-container {
     form {
@@ -377,6 +366,9 @@ body.dark-theme {
       --h-bkg-color: hsl(209, 23%, 22%);
       --h-text-color: #fff;
     }
+    aside {
+      --aside-text-color: #fff;
+    }
     .form-and-dropdown-container {
       form {
         input,
@@ -415,7 +407,9 @@ body.dark-theme {
       --h-bkg-color: #fff;
       --h-text-color: hsl(200, 15%, 8%);
     }
-
+    aside {
+      --aside-text-color: hsl(200, 15%, 8%);
+    }
     .form-and-dropdown-container {
       form {
         input,
@@ -455,6 +449,9 @@ body {
     background: var(--h-bkg-color);
     color: var(--h-text-color);
   }
+  aside {
+    color: var(--aside-text-color);
+  }
   .form-and-dropdown-container {
     form {
       input,
@@ -485,8 +482,3 @@ body {
     }
   }
 }
-
-// h1,
-// p {
-//   color: var(--text-color);
-// }
