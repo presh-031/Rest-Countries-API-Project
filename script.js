@@ -152,8 +152,7 @@ function handleCountryClick(e, data) {
 }
 
 function getSpecificCountryData(name) {
-  const url =
-    name.length <= 3 ? `https://restcountries.com/v3.1/alpha/${name}` : `https://restcountries.com/v3.1/name/${name}`;
+  const url = `https://restcountries.com/v2/name/${name}`;
 
   // gridContainer.style.display = "none";
   // loader.style.display = "block";
@@ -182,21 +181,14 @@ const currenciesSpecific = document.querySelector(".currencies-specific");
 const languagesSpecific = document.querySelector(".languages-specific");
 const bordersSpecific = document.querySelector(".borders-specific");
 function updateDOMForInfoPage(data) {
-  // flagSpecific.src = data[0].flags.svg;
-  // nativeNameSpecific.innerHTML = `${data[0].nativeName}.`;
-  // populationSpecific.innerHTML = data[0].population;
-  // regionSpecific.innerHTML = `${data[0].region}.`;
-  // subRegionSpecific.innerHTML = `${data[0].subregion}.`;
-  // capitalSpecific.innerHTML = `${data[0].capital}.`;
-  // topLevelDomainSpecific.innerHTML = data[0].topLevelDomain;
-
   flagSpecific.src = data[0].flags.svg;
-  nativeNameSpecific.innerHTML = `${data[0].name.nativeName[0].common}.`;
+  nativeNameSpecific.innerHTML = `${data[0].nativeName}.`;
   populationSpecific.innerHTML = data[0].population;
   regionSpecific.innerHTML = `${data[0].region}.`;
   subRegionSpecific.innerHTML = `${data[0].subregion}.`;
-  capitalSpecific.innerHTML = `${data[0].capital[0]}.`;
-  topLevelDomainSpecific.innerHTML = data[0].tld;
+  capitalSpecific.innerHTML = `${data[0].capital}.`;
+  topLevelDomainSpecific.innerHTML = data[0].topLevelDomain;
+
   // console.log(data[0].currencies); //array
   // console.log(data[0].languages); //array
   // console.log(data[0].borders); //sometimes undefined, sometimes an array
@@ -264,22 +256,24 @@ function borderCountryInfo(borderCountries) {
   borderCountries.addEventListener("click", (e) => {
     console.log(e.target.textContent);
     // getBorderCountryData(e.target.textContent);
-    updateDOMForInfoPage(e.target.textContent);
+    getBorderCountryData(e.target.textContent);
   });
 }
 // function to fetch for borderCountry
 function getBorderCountryData(code) {
-  const url = `https://restcountries.com/v3.1/alpha/${code}`;
+  const url = `https://restcountries.com/v2/alpha/${code}`;
 
   // gridContainer.style.display = "none";
   // loader.style.display = "block";
   fetch(url)
     .then((res) => res.json()) //parse response as JSON
     .then((data) => {
+      console.log(code);
+      console.log(data);
       // loader disappears
       // countryPageMain.style.display = "block";
       // api returns differently structured data due to different url, hence can't reuse updateDomForInfoPage function.
-      updateDOMForInfoPage(data);
+      updateDOMForBorderCountryPage(data);
       back();
     })
     .catch((err) => {
