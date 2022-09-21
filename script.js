@@ -22,7 +22,6 @@ function filter() {
   const items = document.querySelector("#filter");
   items.addEventListener("change", (e) => {
     const filterParam = e.target.value;
-    console.log(filterParam);
     if (filterParam === "#") {
       getAllCountries(onPageLoadParam);
       inputField.value = "";
@@ -58,8 +57,6 @@ function getAllCountries(param) {
     .then((data) => {
       updateDOMForHomePage(data);
       loader.style.display = "none";
-      // Darkmode only after fetch to prevent disruption.
-      // handleDarkMode();
     })
     .catch((err) => {
       console.log(`error ${err}`);
@@ -144,7 +141,7 @@ function updateDOMForHomePage(data) {
 function handleCountryClick(e, data) {
   const clickedItem = e.target;
   if (clickedItem.classList.contains("country-name")) {
-    console.log(clickedItem.innerHTML.toLowerCase());
+    // console.log(clickedItem.innerHTML.toLowerCase());
     getSpecificCountryData(clickedItem.innerHTML.toLowerCase());
   }
 }
@@ -260,7 +257,6 @@ function getBorderCountryData(code) {
     })
     .catch((err) => {
       console.log(`error ${err}`);
-      // Better Error handling.
     });
 }
 

@@ -61,7 +61,7 @@ aside {
 main {
   max-width: 1440px;
   margin: auto;
-  // outline: 1px solid red;
+  outline: 1px solid red;
 }
 .form-and-dropdown-container {
   width: 80%;
@@ -196,9 +196,17 @@ main {
 }
 @media (min-width: 1000px) {
   .countries-container {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 2rem;
+  }
+}
+@media (min-width: 1200px) {
+  .form-and-dropdown-container {
+    width: 95%;
+  }
+  .countries-container {
+    grid-template-columns: repeat(4, 1fr);
+    width: 95%;
   }
 }
 
@@ -263,7 +271,7 @@ main {
   }
 }
 .border {
-  padding: 0.5rem 2rem;
+  padding: 1rem 4rem;
   margin: 1rem;
   border: none;
   border-radius: 2px;
