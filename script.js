@@ -151,7 +151,7 @@ function handleCountryClick(e, data) {
     getSpecificCountryData(clickedItem.innerHTML.toLowerCase());
   }
 }
-
+// For better readability, different functions should handle the fetch, but the same funtion should handle dom updating.
 function getSpecificCountryData(name) {
   const url =
     name.length <= 3 ? `https://restcountries.com/v3.1/alpha/${name}` : `https://restcountries.com/v3.1/name/${name}`;
@@ -196,14 +196,21 @@ function updateDOMForInfoPage(data) {
   // clearing  content of parent before looping and appending
   currenciesSpecific.innerHTML = "";
   const currencies = data[0].currencies;
-  currencies.forEach((currency) => {
-    const eachCurrency = document.createElement("span");
-    currenciesSpecific.append(eachCurrency);
+  const all = [];
+  for (let currency in currencies) {
+    // const eachCurrency = document.createElement("span");
+    // currenciesSpecific.append(eachCurrency);
 
-    // Better text-formatting of the each language shown from the languages array.
-    eachCurrency.innerHTML =
-      currencies.indexOf(currency) === currencies.length - 1 ? `${currency.name}.` : `${currency.name}, `;
-  });
+    // eachCurrency.innerHTML = currency.name;
+    // console.log(currencies.currency);
+
+    for (let name in currency) {
+      console.log(currencies.currency.name);
+      all.push(currencies.currency.name);
+    }
+  }
+  console.log(all);
+  console.log(currencies);
 
   const languages = data[0].languages;
   // clearing  content of parent before looping and appending
@@ -251,12 +258,7 @@ function back() {
 
 //function to handle border countries click
 function borderCountryInfo(borderCountries) {
-  // console.log(borderCountries);
-
   borderCountries.addEventListener("click", (e) => {
-    // console.log(e.target.textContent);
-    // getBorderCountryData(e.target.textContent);
     getSpecificCountryData(e.target.textContent);
   });
 }
-//
