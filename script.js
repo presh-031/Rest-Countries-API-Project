@@ -133,6 +133,8 @@ function updateDOMForHomePage(data) {
       homePageMain.style.display = "none";
       handleCountryClick(e, data);
     });
+
+    handleDarkMode(infoContainer);
   });
 }
 
@@ -319,10 +321,20 @@ function updateDOMForBorderCountryPage(data) {
 const darkMode = document.querySelector(".right-section");
 //
 const headerEl = document.querySelector("header");
-const mainEl = document.querySelector("main");
+const bodyEl = document.querySelector("body");
 const asideEl = document.querySelector("aside");
-darkMode.addEventListener("click", () => {
-  headerEl.classList.toggle("header-dark");
-  mainEl.classList.toggle("main-dark");
-  asideEl.classList.toggle("aside-dark");
-});
+const searchInputEl = document.querySelector("#search");
+const filterEl = document.querySelector("select");
+//
+function handleDarkMode(infoContainer) {
+  darkMode.addEventListener("click", () => {
+    headerEl.classList.toggle("header-dark");
+    bodyEl.classList.toggle("body-dark");
+    asideEl.classList.toggle("aside-dark");
+    searchInputEl.classList.toggle("input-dark");
+    infoContainer.classList.toggle("info-container-dark");
+    filterEl.classList.toggle("filter-dark");
+  });
+}
+
+handleDarkMode();
