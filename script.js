@@ -316,3 +316,13 @@ function updateDOMForBorderCountryPage(data) {
 }
 
 // ////////Adding dark mode functionality
+const darkMode = document.querySelector(".right-section");
+//
+const headerEl = document.querySelector("header");
+const mainEl = document.querySelector("main");
+const asideEl = document.querySelector("aside");
+darkMode.addEventListener("click", () => {
+  headerEl.classList.toggle("header-dark");
+  mainEl.classList.toggle("main-dark");
+  asideEl.classList.toggle("aside-dark");
+});

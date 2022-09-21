@@ -41,6 +41,8 @@ header {
     align-items: center;
     column-gap: 0.8rem;
     font-weight: 600;
+    outline: 1px solid red;
+    cursor: pointer;
     img {
       width: 2rem;
     }
@@ -71,6 +73,7 @@ aside {
 main {
   max-width: 1440px;
   margin: auto;
+  outline: 1px solid red;
 }
 .form-and-dropdown-container {
   width: 80%;
@@ -277,4 +280,17 @@ main {
   border-radius: 2px;
   outline: 1px solid $dark-gray;
   box-shadow: 1px 1px 5px rgba($color: #000000, $alpha: 0.2);
+}
+
+// /////Darkmode
+.main-dark {
+  background-color: $dark-blue;
+}
+.header-dark {
+  background-color: $dark-blue;
+  color: $very-light-gray;
+}
+.aside-dark {
+  background-color: $dark-blue;
+  color: $very-light-gray;
 }
