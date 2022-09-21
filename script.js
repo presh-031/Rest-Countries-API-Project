@@ -58,6 +58,8 @@ function getAllCountries(param) {
     .then((data) => {
       updateDOMForHomePage(data);
       loader.style.display = "none";
+      // Darkmode only after fetch to prevent disruption.
+      // handleDarkMode();
     })
     .catch((err) => {
       console.log(`error ${err}`);
@@ -134,7 +136,7 @@ function updateDOMForHomePage(data) {
       handleCountryClick(e, data);
     });
 
-    handleDarkMode(infoContainer);
+    // handleDarkMode(infoContainer);
   });
 }
 
@@ -326,15 +328,34 @@ const asideEl = document.querySelector("aside");
 const searchInputEl = document.querySelector("#search");
 const filterEl = document.querySelector("select");
 //
-function handleDarkMode(infoContainer) {
-  darkMode.addEventListener("click", () => {
-    headerEl.classList.toggle("header-dark");
-    bodyEl.classList.toggle("body-dark");
-    asideEl.classList.toggle("aside-dark");
-    searchInputEl.classList.toggle("input-dark");
-    infoContainer.classList.toggle("info-container-dark");
-    filterEl.classList.toggle("filter-dark");
-  });
+// function handleDarkMode(infoContainer) {
+//   darkMode.addEventListener("click", () => {
+//     headerEl.classList.toggle("header-dark");
+//     bodyEl.classList.toggle("body-dark");
+//     asideEl.classList.toggle("aside-dark");
+//     searchInputEl.classList.toggle("input-dark");
+//     filterEl.classList.toggle("filter-dark");
+
+//     infoContainer.classList.toggle("info-container-dark");
+//   });
+// }
+const btn = document.querySelector(".right-section");
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme == "dark") {
+  document.body.classList.toggle("dark-theme");
+} else if (currentTheme == "light") {
+  document.body.classList.toggle("light-theme");
 }
 
-handleDarkMode();
+btn.addEventListener("click", function () {
+  if (prefersDarkScheme.matches) {
+    document.body.classList.toggle("light-theme");
+    var theme = document.body.classList.contains("light-theme") ? "light" : "dark";
+  } else {
+    document.body.classList.toggle("dark-theme");
+    var theme = document.body.classList.contains("dark-theme") ? "dark" : "light";
+  }
+  localStorage.setItem("theme", theme);
+});
