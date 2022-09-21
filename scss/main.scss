@@ -15,7 +15,7 @@
 }
 body {
   position: relative;
-  padding-top: 8rem;
+  padding-top: 7rem;
   background-color: $very-light-gray;
 }
 // Mobile-first styles
@@ -48,9 +48,33 @@ header {
     }
   }
 }
+// Attribution section
+aside {
+  // outline: 1px solid red;
+  // padding: 1.9rem;
+  font-size: 1.5rem;
+  text-align: center;
+  color: $very-dark-blue-text;
+  // color: #bbb;
+  p {
+    a {
+      color: inherit;
+      cursor: pointer;
+    }
+    img {
+      font-size: inherit;
+      width: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+    img:hover {
+      transform: rotate(360deg) scale(1.2);
+    }
+  }
+}
 //
 main {
-  outline: 1px solid red;
+  // outline: 1px solid red;
   max-width: 1440px;
   margin: auto;
 }
