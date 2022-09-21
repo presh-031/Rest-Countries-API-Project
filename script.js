@@ -161,8 +161,8 @@ function getSpecificCountryData(name) {
     .then((data) => {
       // loader disappears
       countryPageMain.style.display = "block";
-      updateDOMForInfoPage(data);
       back();
+      updateDOMForInfoPage(data);
     })
     .catch((err) => {
       console.log(`error ${err}`);
