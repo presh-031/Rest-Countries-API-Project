@@ -47,7 +47,8 @@ function search(onPageLoadParam) {
   });
 }
 
-// Function to handle all the fetches for HomePage and loader.
+// Function to handle all the fetches for HomePage
+// handles loader
 function getAllCountries(param) {
   const baseUrl = "https://restcountries.com/v2/";
   const loader = document.querySelector(".loader");
@@ -162,8 +163,9 @@ function getSpecificCountryData(name) {
     .then((data) => {
       // loader disappears
       countryPageMain.style.display = "block";
-      updateDOMForInfoPage(data);
+      console.log(data);
       back();
+      updateDOMForInfoPage(data);
     })
     .catch((err) => {
       console.log(`error ${err}`);
@@ -171,35 +173,25 @@ function getSpecificCountryData(name) {
     });
 }
 
-const flagSpecific = document.querySelector(".flag-image-specific");
-const nativeNameSpecific = document.querySelector(".native-name-specific");
-const populationSpecific = document.querySelector(".population-specific");
-const regionSpecific = document.querySelector(".region-specific");
-const subRegionSpecific = document.querySelector(".subregion-specific");
-const capitalSpecific = document.querySelector(".capital-specific");
-const topLevelDomainSpecific = document.querySelector(".top-level-domain-specific");
-const currenciesSpecific = document.querySelector(".currencies-specific");
-const languagesSpecific = document.querySelector(".languages-specific");
-const bordersSpecific = document.querySelector(".borders-specific");
 function updateDOMForInfoPage(data) {
-  // flagSpecific.src = data[0].flags.svg;
-  // nativeNameSpecific.innerHTML = `${data[0].nativeName}.`;
-  // populationSpecific.innerHTML = data[0].population;
-  // regionSpecific.innerHTML = `${data[0].region}.`;
-  // subRegionSpecific.innerHTML = `${data[0].subregion}.`;
-  // capitalSpecific.innerHTML = `${data[0].capital}.`;
-  // topLevelDomainSpecific.innerHTML = data[0].topLevelDomain;
+  const flagSpecific = document.querySelector(".flag-image-specific");
+  const nativeNameSpecific = document.querySelector(".native-name-specific");
+  const populationSpecific = document.querySelector(".population-specific");
+  const regionSpecific = document.querySelector(".region-specific");
+  const subRegionSpecific = document.querySelector(".subregion-specific");
+  const capitalSpecific = document.querySelector(".capital-specific");
+  const topLevelDomainSpecific = document.querySelector(".top-level-domain-specific");
+  const currenciesSpecific = document.querySelector(".currencies-specific");
+  const languagesSpecific = document.querySelector(".languages-specific");
+  const bordersSpecific = document.querySelector(".borders-specific");
 
   flagSpecific.src = data[0].flags.svg;
-  nativeNameSpecific.innerHTML = `${data[0].name.nativeName[0].common}.`;
+  nativeNameSpecific.innerHTML = `${data[0].name.common}.`;
   populationSpecific.innerHTML = data[0].population;
   regionSpecific.innerHTML = `${data[0].region}.`;
   subRegionSpecific.innerHTML = `${data[0].subregion}.`;
   capitalSpecific.innerHTML = `${data[0].capital[0]}.`;
   topLevelDomainSpecific.innerHTML = data[0].tld;
-  // console.log(data[0].currencies); //array
-  // console.log(data[0].languages); //array
-  // console.log(data[0].borders); //sometimes undefined, sometimes an array
 
   // clearing  content of parent before looping and appending
   currenciesSpecific.innerHTML = "";
@@ -259,88 +251,12 @@ function back() {
 
 //function to handle border countries click
 function borderCountryInfo(borderCountries) {
-  console.log(borderCountries);
+  // console.log(borderCountries);
 
   borderCountries.addEventListener("click", (e) => {
-    console.log(e.target.textContent);
+    // console.log(e.target.textContent);
     // getBorderCountryData(e.target.textContent);
-    updateDOMForInfoPage(e.target.textContent);
+    getSpecificCountryData(e.target.textContent);
   });
 }
-// function to fetch for borderCountry
-function getBorderCountryData(code) {
-  const url = `https://restcountries.com/v3.1/alpha/${code}`;
-
-  // gridContainer.style.display = "none";
-  // loader.style.display = "block";
-  fetch(url)
-    .then((res) => res.json()) //parse response as JSON
-    .then((data) => {
-      // loader disappears
-      // countryPageMain.style.display = "block";
-      // api returns differently structured data due to different url, hence can't reuse updateDomForInfoPage function.
-      updateDOMForInfoPage(data);
-      back();
-    })
-    .catch((err) => {
-      console.log(`error ${err}`);
-      // Better Error handling.
-    });
-}
-
-function updateDOMForBorderCountryPage(data) {
-  flagSpecific.src = data[0].flags.svg;
-  nativeNameSpecific.innerHTML = `${data[0].name.nativeName[0].common}.`;
-  populationSpecific.innerHTML = data[0].population;
-  regionSpecific.innerHTML = `${data[0].region}.`;
-  subRegionSpecific.innerHTML = `${data[0].subregion}.`;
-  capitalSpecific.innerHTML = `${data[0].capital[0]}.`;
-  topLevelDomainSpecific.innerHTML = data[0].tld;
-
-  // clearing  content of parent before looping and appending
-  currenciesSpecific.innerHTML = "";
-  const currencies = data[0].currencies;
-  currencies.forEach((currency) => {
-    const eachCurrency = document.createElement("span");
-    currenciesSpecific.append(eachCurrency);
-
-    // Better text-formatting of the each language shown from the languages array.
-    eachCurrency.innerHTML =
-      currencies.indexOf(currency) === currencies.length - 1 ? `${currency.name}.` : `${currency.name}, `;
-  });
-
-  const languages = data[0].languages;
-  // clearing  content of parent before looping and appending
-  languagesSpecific.innerHTML = "";
-  languages.forEach((language) => {
-    const eachLanguage = document.createElement("span");
-    // eachLanguage.innerHTML = "";
-    languagesSpecific.append(eachLanguage);
-
-    // Better text-formatting of the each language shown from the languages array.
-    eachLanguage.innerHTML =
-      languages.indexOf(language) === languages.length - 1 ? `${language.name}.` : `${language.name}, `;
-  });
-
-  const borderCountries = data[0].borders;
-  // clearing  content of parent before looping and appending
-  bordersSpecific.innerHTML = "";
-
-  // Loose inequality necessary for implicit conversion.
-  if (borderCountries != 0) {
-    borderCountries.forEach((borderCountry) => {
-      const eachBorderCountry = document.createElement("button");
-
-      // Has better representation with styles from this class, hence doesn't need formatting.
-      eachBorderCountry.classList.add("border");
-      bordersSpecific.append(eachBorderCountry);
-      eachBorderCountry.innerHTML = borderCountry;
-
-      // innerHTML of eachborderCountry will be used to fetch when any one of them is clicked.
-      borderCountryInfo(eachBorderCountry);
-    });
-  } else {
-    bordersSpecific.style.display = "inline-block";
-    bordersSpecific.innerHTML = "No borders.";
-  }
-}
+//
