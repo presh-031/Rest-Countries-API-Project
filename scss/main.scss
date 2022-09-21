@@ -147,6 +147,7 @@ main {
     .info-container {
       padding: 2rem;
       font-size: 1.8rem;
+      height: 100%;
       .country-name {
         margin-bottom: 2rem;
       }
@@ -328,6 +329,12 @@ body {
         --i-text-color: hsl(0, 0%, 52%);
       }
     }
+    div {
+      select {
+        --s-bkg-color: #fff;
+        --s-text-color: hsl(200, 15%, 8%);
+      }
+    }
   }
   countries-container {
     .each-country {
@@ -352,6 +359,12 @@ body.dark-theme {
       input::placeholder {
         --i-bkg-color: hsl(209, 23%, 22%);
         --i-text-color: #fff;
+      }
+    }
+    div {
+      select {
+        --s-bkg-color: hsl(209, 23%, 22%);
+        --s-text-color: #fff;
       }
     }
   }
@@ -383,8 +396,14 @@ body.dark-theme {
           --i-text-color: #fff;
         }
       }
+      div {
+        select {
+          --s-bkg-color: hsl(209, 23%, 22%);
+          --s-text-color: #fff;
+        }
+      }
     }
-    countries-container {
+    .countries-container {
       .each-country {
         .info-container {
           --inf-bkg-color: hsl(209, 23%, 22%);
@@ -410,8 +429,14 @@ body.dark-theme {
           --i-text-color: hsl(0, 0%, 52%);
         }
       }
+      div {
+        select {
+          --s-bkg-color: #fff;
+          --s-text-color: hsl(200, 15%, 8%);
+        }
+      }
     }
-    countries-container {
+    .countries-container {
       .each-country {
         .info-container {
           --inf-bkg-color: #fff;
@@ -437,8 +462,14 @@ body {
         color: var(--i-text-color);
       }
     }
+    div {
+      select {
+        background: var(--s-bkg-color);
+        color: var(--s-text-color);
+      }
+    }
   }
-  countries-container {
+  .countries-container {
     .each-country {
       .info-container {
         background: var(--inf-bkg-color);
