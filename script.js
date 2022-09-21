@@ -283,17 +283,17 @@ function getBorderCountryData(code) {
 }
 
 function updateDOMForBorderCountryPage(data) {
-  flagSpecific.src = data[0].flags.svg;
-  nativeNameSpecific.innerHTML = `${data[0].name.nativeName[0].common}.`;
-  populationSpecific.innerHTML = data[0].population;
-  regionSpecific.innerHTML = `${data[0].region}.`;
-  subRegionSpecific.innerHTML = `${data[0].subregion}.`;
-  capitalSpecific.innerHTML = `${data[0].capital[0]}.`;
-  topLevelDomainSpecific.innerHTML = data[0].tld;
+  flagSpecific.src = data.flags.svg;
+  nativeNameSpecific.innerHTML = `${data.nativeName}.`;
+  populationSpecific.innerHTML = data.population;
+  regionSpecific.innerHTML = `${data.region}.`;
+  subRegionSpecific.innerHTML = `${data.subregion}.`;
+  capitalSpecific.innerHTML = `${data.capital}.`;
+  topLevelDomainSpecific.innerHTML = data.topLevelDomain;
 
   // clearing  content of parent before looping and appending
   currenciesSpecific.innerHTML = "";
-  const currencies = data[0].currencies;
+  const currencies = data.currencies;
   currencies.forEach((currency) => {
     const eachCurrency = document.createElement("span");
     currenciesSpecific.append(eachCurrency);
@@ -303,7 +303,7 @@ function updateDOMForBorderCountryPage(data) {
       currencies.indexOf(currency) === currencies.length - 1 ? `${currency.name}.` : `${currency.name}, `;
   });
 
-  const languages = data[0].languages;
+  const languages = data.languages;
   // clearing  content of parent before looping and appending
   languagesSpecific.innerHTML = "";
   languages.forEach((language) => {
@@ -316,7 +316,7 @@ function updateDOMForBorderCountryPage(data) {
       languages.indexOf(language) === languages.length - 1 ? `${language.name}.` : `${language.name}, `;
   });
 
-  const borderCountries = data[0].borders;
+  const borderCountries = data.borders;
   // clearing  content of parent before looping and appending
   bordersSpecific.innerHTML = "";
 
