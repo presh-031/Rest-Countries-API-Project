@@ -321,6 +321,14 @@ body {
     --h-bkg-color: #fff;
     --h-text-color: hsl(200, 15%, 8%);
   }
+  .form-and-dropdown-container {
+    form {
+      input {
+        --i-bkg-color: #fff;
+        --i-text-color: hsl(0, 0%, 52%);
+      }
+    }
+  }
 }
 body.dark-theme {
   // dark-mode
@@ -330,7 +338,14 @@ body.dark-theme {
     --h-bkg-color: hsl(209, 23%, 22%);
     --h-text-color: #fff;
   }
-  input {
+  .form-and-dropdown-container {
+    form {
+      input,
+      input::placeholder {
+        --i-bkg-color: hsl(209, 23%, 22%);
+        --i-text-color: #fff;
+      }
+    }
   }
 }
 
@@ -342,6 +357,16 @@ body.dark-theme {
     --bkg-color: hsl(207, 26%, 17%);
     header {
       --h-bkg-color: hsl(209, 23%, 22%);
+      --h-text-color: #fff;
+    }
+    .form-and-dropdown-container {
+      form {
+        input,
+        input::placeholder {
+          --i-bkg-color: hsl(209, 23%, 22%);
+          --i-text-color: #fff;
+        }
+      }
     }
   }
   body.light-theme {
@@ -350,14 +375,36 @@ body.dark-theme {
     --bkg-color: #fff;
     header {
       --h-bkg-color: #fff;
+      --h-text-color: hsl(200, 15%, 8%);
+    }
+
+    .form-and-dropdown-container {
+      form {
+        input,
+        input::placeholder {
+          --i-bkg-color: #fff;
+          --i-text-color: hsl(0, 0%, 52%);
+        }
+      }
     }
   }
 }
 
 body {
   background: var(--bkg-color);
+  color: var(--text-color);
   header {
     background: var(--h-bkg-color);
+    color: var(--h-text-color);
+  }
+  .form-and-dropdown-container {
+    form {
+      input,
+      input::placeholder {
+        background: var(--i-bkg-color);
+        color: var(--i-text-color);
+      }
+    }
   }
 }
 

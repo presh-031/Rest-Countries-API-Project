@@ -319,26 +319,7 @@ function updateDOMForBorderCountryPage(data) {
   }
 }
 
-// ////////Adding dark mode functionality
-const darkMode = document.querySelector(".right-section");
-//
-const headerEl = document.querySelector("header");
-const bodyEl = document.querySelector("body");
-const asideEl = document.querySelector("aside");
-const searchInputEl = document.querySelector("#search");
-const filterEl = document.querySelector("select");
-//
-// function handleDarkMode(infoContainer) {
-//   darkMode.addEventListener("click", () => {
-//     headerEl.classList.toggle("header-dark");
-//     bodyEl.classList.toggle("body-dark");
-//     asideEl.classList.toggle("aside-dark");
-//     searchInputEl.classList.toggle("input-dark");
-//     filterEl.classList.toggle("filter-dark");
-
-//     infoContainer.classList.toggle("info-container-dark");
-//   });
-// }
+// // ////////Adding dark mode functionality
 const btn = document.querySelector(".right-section");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
