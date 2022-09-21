@@ -316,7 +316,7 @@ main {
 body {
   // light-mode
   --text-color: hsl(200, 15%, 8%);
-  --bkg-color: #fff;
+  --bkg-color: hsl(0, 0%, 98%);
   header {
     --h-bkg-color: #fff;
     --h-text-color: hsl(200, 15%, 8%);
@@ -326,6 +326,14 @@ body {
       input {
         --i-bkg-color: #fff;
         --i-text-color: hsl(0, 0%, 52%);
+      }
+    }
+  }
+  countries-container {
+    .each-country {
+      .info-container {
+        --inf-bkg-color: #fff;
+        --inf-text-color: hsl(200, 15%, 8%);
       }
     }
   }
@@ -344,6 +352,14 @@ body.dark-theme {
       input::placeholder {
         --i-bkg-color: hsl(209, 23%, 22%);
         --i-text-color: #fff;
+      }
+    }
+  }
+  countries-container {
+    .each-country {
+      .info-container {
+        --inf-bkg-color: hsl(209, 23%, 22%);
+        --inf-text-color: #fff;
       }
     }
   }
@@ -368,11 +384,19 @@ body.dark-theme {
         }
       }
     }
+    countries-container {
+      .each-country {
+        .info-container {
+          --inf-bkg-color: hsl(209, 23%, 22%);
+          --inf-text-color: #fff;
+        }
+      }
+    }
   }
   body.light-theme {
     // light-mode
     --text-color: hsl(200, 15%, 8%);
-    --bkg-color: #fff;
+    --bkg-color: hsl(0, 0%, 98%);
     header {
       --h-bkg-color: #fff;
       --h-text-color: hsl(200, 15%, 8%);
@@ -384,6 +408,14 @@ body.dark-theme {
         input::placeholder {
           --i-bkg-color: #fff;
           --i-text-color: hsl(0, 0%, 52%);
+        }
+      }
+    }
+    countries-container {
+      .each-country {
+        .info-container {
+          --inf-bkg-color: #fff;
+          --inf-text-color: hsl(200, 15%, 8%);
         }
       }
     }
@@ -403,6 +435,14 @@ body {
       input::placeholder {
         background: var(--i-bkg-color);
         color: var(--i-text-color);
+      }
+    }
+  }
+  countries-container {
+    .each-country {
+      .info-container {
+        background: var(--inf-bkg-color);
+        color: var(--inf-text-color);
       }
     }
   }
