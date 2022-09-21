@@ -264,10 +264,10 @@ main {
 }
 .border {
   padding: 0.5rem 2rem;
-  background-color: $white;
+  margin: 1rem;
   border: none;
   border-radius: 2px;
-  outline: 1px solid $dark-gray;
+  cursor: pointer;
   box-shadow: 1px 1px 5px rgba($color: #000000, $alpha: 0.2);
 }
 
@@ -313,6 +313,10 @@ body {
       --back-text-color: hsl(200, 15%, 8%);
     }
   }
+  .border {
+    --back-bkg-color: #fff;
+    --back-text-color: hsl(200, 15%, 8%);
+  }
 }
 body.dark-theme {
   // dark-mode
@@ -353,6 +357,10 @@ body.dark-theme {
       --back-bkg-color: hsl(209, 23%, 22%);
       --back-text-color: #fff;
     }
+  }
+  .border {
+    --back-bkg-color: hsl(209, 23%, 22%);
+    --back-text-color: #fff;
   }
 }
 
@@ -398,6 +406,10 @@ body.dark-theme {
         --back-text-color: #fff;
       }
     }
+    .border {
+      --back-bkg-color: hsl(209, 23%, 22%);
+      --back-text-color: #fff;
+    }
   }
   body.light-theme {
     // light-mode
@@ -438,6 +450,10 @@ body.dark-theme {
         --back-bkg-color: #fff;
         --back-text-color: hsl(200, 15%, 8%);
       }
+    }
+    .border {
+      --back-bkg-color: #fff;
+      --back-text-color: hsl(200, 15%, 8%);
     }
   }
 }
@@ -480,5 +496,9 @@ body {
       background: var(--back-bkg-color);
       color: var(--back-text-color);
     }
+  }
+  .border {
+    background: var(--back-bkg-color);
+    color: var(--back-text-color);
   }
 }
