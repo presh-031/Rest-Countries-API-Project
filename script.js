@@ -61,16 +61,12 @@ function getAllCountries(param) {
     })
     .catch((err) => {
       console.log(`error ${err}`);
-      //
-      //
-      // Error handling.
     });
 }
 
 const gridContainer = document.querySelector(".countries-container");
 function updateDOMForHomePage(data) {
   gridContainer.innerHTML = "";
-  // gridContainer.classList.add("active");
   data.forEach((country) => {
     // create elements
     const eachCountry = document.createElement("div");
@@ -134,9 +130,7 @@ function updateDOMForHomePage(data) {
     countryCapital.innerHTML = country.capital ? country.capital : "-";
 
     eachCountry.addEventListener("click", (e) => {
-      // console.log(e, data);
       homePageMain.style.display = "none";
-      // loader shows
       handleCountryClick(e, data);
     });
   });
@@ -154,19 +148,15 @@ function handleCountryClick(e, data) {
 function getSpecificCountryData(name) {
   const url = `https://restcountries.com/v2/name/${name}`;
 
-  // gridContainer.style.display = "none";
-  // loader.style.display = "block";
   fetch(url)
     .then((res) => res.json()) //parse response as JSON
     .then((data) => {
-      // loader disappears
       countryPageMain.style.display = "block";
       back();
       updateDOMForInfoPage(data);
     })
     .catch((err) => {
       console.log(`error ${err}`);
-      // Better Error handling.
     });
 }
 
@@ -221,9 +211,7 @@ function updateDOMForInfoPage(data) {
   const borderCountries = data[0].borders;
   // clearing  content of parent before looping and appending
   bordersSpecific.innerHTML = "";
-
-  // Loose inequality necessary for implicit conversion.
-  if (borderCountries != 0) {
+  if (borderCountries) {
     borderCountries.forEach((borderCountry) => {
       const eachBorderCountry = document.createElement("button");
 
@@ -251,27 +239,17 @@ function back() {
 
 //function to handle border countries click
 function borderCountryInfo(borderCountries) {
-  console.log(borderCountries);
-
   borderCountries.addEventListener("click", (e) => {
-    console.log(e.target.textContent);
-    // getBorderCountryData(e.target.textContent);
+    // console.log(e.target.textContent);
     getBorderCountryData(e.target.textContent);
   });
 }
 // function to fetch for borderCountry
 function getBorderCountryData(code) {
   const url = `https://restcountries.com/v2/alpha/${code}`;
-
-  // gridContainer.style.display = "none";
-  // loader.style.display = "block";
   fetch(url)
     .then((res) => res.json()) //parse response as JSON
     .then((data) => {
-      console.log(code);
-      console.log(data);
-      // loader disappears
-      // countryPageMain.style.display = "block";
       // api returns slightly differently structured data when searching with name vs when searching with alpha code, hence can't reuse updateDomForInfoPage function.
       updateDOMForBorderCountryPage(data);
       back();
@@ -319,9 +297,7 @@ function updateDOMForBorderCountryPage(data) {
   const borderCountries = data.borders;
   // clearing  content of parent before looping and appending
   bordersSpecific.innerHTML = "";
-
-  // Loose inequality necessary for implicit conversion.
-  if (borderCountries != 0) {
+  if (borderCountries) {
     borderCountries.forEach((borderCountry) => {
       const eachBorderCountry = document.createElement("button");
 
@@ -338,3 +314,5 @@ function updateDOMForBorderCountryPage(data) {
     bordersSpecific.innerHTML = "No borders.";
   }
 }
+
+// ////////Adding dark mode functionality
