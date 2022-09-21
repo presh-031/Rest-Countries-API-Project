@@ -272,7 +272,7 @@ function getBorderCountryData(code) {
       console.log(data);
       // loader disappears
       // countryPageMain.style.display = "block";
-      // api returns differently structured data due to different url, hence can't reuse updateDomForInfoPage function.
+      // api returns slightly differently structured data when searching with name vs when searching with alpha code, hence can't reuse updateDomForInfoPage function.
       updateDOMForBorderCountryPage(data);
       back();
     })
