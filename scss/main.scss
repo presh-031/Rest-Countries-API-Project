@@ -288,32 +288,9 @@ main {
   box-shadow: 1px 1px 5px rgba($color: #000000, $alpha: 0.2);
 }
 
-// /////Darkmode classes
-.body-dark {
-  background-color: $very-dark-blue;
-}
-.header-dark {
-  background-color: $dark-blue;
-  color: $very-light-gray;
-}
-.aside-dark {
-  background-color: $very-dark-blue;
-  color: $very-light-gray;
-}
-.input-dark {
-  background-color: $dark-blue;
-  color: $white;
-}
-.info-container-dark {
-  background-color: $dark-blue;
-  color: $white;
-  height: 100%;
-}
-.filter-dark {
-  background-color: $dark-blue;
-  color: $white;
-}
-//////// Testing dark mode
+// ////////////////////
+///////////////////////
+//////// Dark mode that respects OS settings and can switch on btn click
 body {
   // light-mode
   --text-color: hsl(200, 15%, 8%);
@@ -336,12 +313,18 @@ body {
       }
     }
   }
-  countries-container {
+  .countries-container {
     .each-country {
       .info-container {
         --inf-bkg-color: #fff;
         --inf-text-color: hsl(200, 15%, 8%);
       }
+    }
+  }
+  .country-page-main {
+    .back-btn {
+      --back-bkg-color: #fff;
+      --back-text-color: hsl(200, 15%, 8%);
     }
   }
 }
@@ -368,12 +351,18 @@ body.dark-theme {
       }
     }
   }
-  countries-container {
+  .countries-container {
     .each-country {
       .info-container {
         --inf-bkg-color: hsl(209, 23%, 22%);
         --inf-text-color: #fff;
       }
+    }
+  }
+  .country-page-main {
+    .back-btn {
+      --back-bkg-color: hsl(209, 23%, 22%);
+      --back-text-color: #fff;
     }
   }
 }
@@ -411,6 +400,12 @@ body.dark-theme {
         }
       }
     }
+    .country-page-main {
+      .back-btn {
+        --back-bkg-color: hsl(209, 23%, 22%);
+        --back-text-color: #fff;
+      }
+    }
   }
   body.light-theme {
     // light-mode
@@ -444,6 +439,12 @@ body.dark-theme {
         }
       }
     }
+    .country-page-main {
+      .back-btn {
+        --back-bkg-color: #fff;
+        --back-text-color: hsl(200, 15%, 8%);
+      }
+    }
   }
 }
 
@@ -475,6 +476,12 @@ body {
         background: var(--inf-bkg-color);
         color: var(--inf-text-color);
       }
+    }
+  }
+  .country-page-main {
+    .back-btn {
+      background: var(--back-bkg-color);
+      color: var(--back-text-color);
     }
   }
 }
