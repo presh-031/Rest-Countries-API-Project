@@ -130,7 +130,6 @@ function updateDOMForHomePage(data) {
 
     eachCountry.addEventListener("click", (e) => {
       handleCountryClick(e);
-      homePageMain.style.display = "none";
     });
   });
 }
@@ -139,7 +138,7 @@ function updateDOMForHomePage(data) {
 function handleCountryClick(e) {
   const clickedItem = e.target;
   if (clickedItem.classList.contains("country-name")) {
-    // console.log(clickedItem.innerHTML.toLowerCase());
+    homePageMain.style.display = "none";
     getSpecificCountryData(clickedItem.innerHTML.toLowerCase());
   }
 }
