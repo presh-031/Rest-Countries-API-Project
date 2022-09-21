@@ -129,16 +129,14 @@ function updateDOMForHomePage(data) {
     countryCapital.innerHTML = country.capital ? country.capital : "-";
 
     eachCountry.addEventListener("click", (e) => {
+      handleCountryClick(e);
       homePageMain.style.display = "none";
-      handleCountryClick(e, data);
     });
-
-    // handleDarkMode(infoContainer);
   });
 }
 
 // ////////////click
-function handleCountryClick(e, data) {
+function handleCountryClick(e) {
   const clickedItem = e.target;
   if (clickedItem.classList.contains("country-name")) {
     // console.log(clickedItem.innerHTML.toLowerCase());
@@ -242,6 +240,7 @@ function back() {
 function borderCountryInfo(borderCountries) {
   borderCountries.addEventListener("click", (e) => {
     // console.log(e.target.textContent);
+    countryPageMain.style.display = "none";
     getBorderCountryData(e.target.textContent);
   });
 }
@@ -254,6 +253,7 @@ function getBorderCountryData(code) {
       back();
       // api returns slightly differently structured data when searching with name vs when searching with alpha code, hence can't reuse updateDomForInfoPage function.
       updateDOMForBorderCountryPage(data);
+      countryPageMain.style.display = "block";
     })
     .catch((err) => {
       console.log(`error ${err}`);
