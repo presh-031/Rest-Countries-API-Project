@@ -254,9 +254,9 @@ function getBorderCountryData(code) {
   fetch(url)
     .then((res) => res.json()) //parse response as JSON
     .then((data) => {
+      back();
       // api returns slightly differently structured data when searching with name vs when searching with alpha code, hence can't reuse updateDomForInfoPage function.
       updateDOMForBorderCountryPage(data);
-      back();
     })
     .catch((err) => {
       console.log(`error ${err}`);
