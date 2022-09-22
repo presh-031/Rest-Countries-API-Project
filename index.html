@@ -25,12 +25,12 @@
 
     <!-- Form and select dropdown -->
     <main class="home-page-main">
-      <section class="form-and-dropdown-container">
+      <div class="form-and-dropdown-container">
         <form action="#">
           <input type="search" name="search" id="search" placeholder="Search for a country..." />
         </form>
         <div>
-          <select name="" id="filter">
+          <select name="filter" id="filter">
             <option value="#">Filter by Region (ALL)</option>
             <option value="africa">Africa</option>
             <option value="americas">America</option>
@@ -40,7 +40,7 @@
           </select>
           <div class="loader"></div>
         </div>
-      </section>
+      </div>
 
       <!-- All Countries section -->
       <section class="countries-container">
@@ -74,7 +74,7 @@
         <span>Back</span>
       </div>
       <div class="flag-container-specific">
-        <img class="flag-image-specific" src="" alt="" />
+        <img class="flag-image-specific" src="" alt="flag-img" />
       </div>
       <div class="info-container-specific">
         <h2 class="country-name-specific"></h2>
