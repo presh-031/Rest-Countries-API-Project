@@ -41,6 +41,15 @@ Users should be able to:
 
 ## My process
 
+### Features
+
+- See all countries from the API on page load.
+- Search for a country using the`input` field
+- Filter countries by region using the dropdown.
+- Click on a country's name to see more detailed information on a separate page.
+- Click through to the border countries on the detail page.
+- Toggle the color scheme between light and dark mode. The color mode respects your system preferences, and then stores whichever you choose in localstorage so it 'remembers' when user comes back to the app.
+
 ### Built with
 
 - Semantic HTML5 markup
