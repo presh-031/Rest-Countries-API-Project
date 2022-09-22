@@ -14,7 +14,6 @@ This is a solution to the [REST Countries API with color theme switcher challeng
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -67,8 +66,6 @@ Users should be able to:
 ### Useful resources
 
 - [CSS Tricks](https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/#aa-using-a-body-class) - This helped me to understand the various ways of implementing color modes, and the idea I used in this project was from this article.
-
-## Author
 
 ## Author
 
